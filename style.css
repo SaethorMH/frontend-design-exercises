@@ -1,0 +1,75 @@
+.bento {
+    display: grid;
+    gap: var(--spacing-base);
+
+    .title {
+        --bg: var(--color-brand-yellow);
+    }
+
+    .list {
+        --bg: var(--color-brand-coffee);
+    }
+
+    .image-1 {
+        color: var(--color-text-accent);
+    }
+
+    .tag {
+        --bg: var(--color-brand-olive);
+        font-size: 2rem;
+        line-height: 1.2;
+    }
+}
+
+.card {
+    border-radius: var(--border-radius);
+    background: var(--bg);
+    overflow: clip;
+
+    &:not(:has(img)) {
+        padding: var(--spacing-base);
+    }
+}
+
+h2 {
+    font-size: 4rem;
+    line-height: 1.1;
+    color: var(--color-text-dark);
+    margin-bottom: var(--spacing-base);
+}
+
+.website {
+    font-size: 1.2rem;
+    margin-top: auto;
+}
+
+
+
+@layer {
+    :root {
+        /* Brand Colors */
+        --color-brand-yellow: #FFB800;
+        --color-brand-olive: #4A5F32;
+        --color-brand-coffee: #5C3C2E;
+
+        /* Background Colors */
+        --color-background-dark: #2C1810;
+        --color-background-primary: var(--color-brand-yellow);
+        --color-background-menu: var(--color-brand-coffee);
+        --color-background-accent: var(--color-brand-olive);
+
+        /* Text Colors */
+        --color-text-dark: var(--color-background-dark);
+        --color-text-light: #FFFFFF;
+        --color-text-accent: var(--color-brand-yellow);
+
+        /* Component Colors */
+        --color-logo-icon: var(--color-text-dark);
+        --color-menu-highlight: var(--color-brand-yellow);
+
+        /* Layout */
+        --border-radius: 24px;
+        --spacing-base: 20px;
+        --spacing-large: 40px;
+    }
+}

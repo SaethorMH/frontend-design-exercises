@@ -1,0 +1,43 @@
+@layer demo {
+
+    *,
+    *::before,
+    *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        background: var(--color-background-dark);
+        font-family: system-ui, sans-serif;
+        padding: var(--spacing-base);
+        display: grid;
+        grid-template-columns: 1fr minmax(0px, 1200px) 1fr;
+        gap: 1rlh;
+        padding-block: 1rlh;
+        font-family: system-ui;
+        line-height: 1.5;
+
+        >* {
+            grid-column: 2;
+        }
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    img {
+        inline-size: 100%;
+        display: block;
+        object-fit: cover;
+        align-self: stretch;
+    }
+
+    h1,
+    h2,
+    h3 {
+        line-height: 1.125;
+    }
+}
