@@ -1,0 +1,15 @@
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+    display: flex;
+    place-content: center;
+    place-items: center;
+    background: #e9ebf3;
+}
+
+h3 {
+    text-wrap: revert;
+}
