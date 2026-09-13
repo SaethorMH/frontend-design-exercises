@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="da">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relative Color Syntax</title>
+    <link rel="stylesheet" href="resources/starter.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <header class="intro">
+        <p class="eyebrow">Frontend Design · farvesystemer</p>
+        <h1>States fra ét farvetoken</h1>
+        <p>
+          De to komponenter skal dele samme state-logik, selv om deres
+          accentfarver er forskellige.
+        </p>
+      </header>
+
+      <div class="examples">
+        <article class="action-card" data-theme="indigo">
+          <p class="eyebrow">Indigo</p>
+          <h2>Planlæg et design-review</h2>
+          <p>
+            Saml komponentens standard-, hover-, active- og focus-states i et
+            lille, vedligeholdelsesvenligt farvesystem.
+          </p>
+          <div class="actions">
+            <a class="button" data-variant="solid" href="#indigo">
+              Book review
+            </a>
+            <button class="button" data-variant="quiet" type="button">
+              Gem kladde
+            </button>
+            <button class="button" data-variant="solid" type="button" disabled>
+              Optaget
+            </button>
+          </div>
+        </article>
+
+        <article class="action-card" data-theme="coral">
+          <p class="eyebrow">Coral</p>
+          <h2>Del en prototype</h2>
+          <p>
+            Her peger <code>--color-accent</code> på
+            <code>--color-coral</code>. De afledte states skal følge med.
+          </p>
+          <div class="actions">
+            <a class="button" data-variant="solid" href="#coral">
+              Del prototype
+            </a>
+            <button class="button" data-variant="quiet" type="button">
+              Forhåndsvis
+            </button>
+            <button class="button" data-variant="solid" type="button" disabled>
+              Arkiveret
+            </button>
+          </div>
+        </article>
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,148 @@
+:root {
+  color-scheme: light;
+  --color-text: #182033;
+  --color-surface: #ffffff;
+  --color-page: #f2f4f8;
+  --color-indigo: #5546d8;
+  --color-coral: #c94f35;
+  --color-on-accent: #ffffff;
+
+  --space-xs: 0.5rem;
+  --space-s: 0.75rem;
+  --space-m: 1rem;
+  --space-l: 1.5rem;
+  --space-xl: 2.5rem;
+  --radius: 1rem;
+}
+
+body {
+  min-block-size: 100svb;
+  padding: clamp(1rem, 4vw, 4rem);
+  color: var(--color-text);
+  background: var(--color-page);
+  font-family: system-ui, sans-serif;
+}
+
+main {
+  inline-size: min(68rem, 100%);
+  margin-inline: auto;
+}
+
+.intro {
+  max-inline-size: 62ch;
+  margin-block-end: var(--space-xl);
+}
+
+.intro > * + * {
+  margin-block-start: var(--space-s);
+}
+
+.intro h1 {
+  font-size: clamp(2rem, 6vw, 4rem);
+  line-height: 0.95;
+}
+
+.eyebrow {
+  color: var(--color-indigo);
+  font-size: 0.78rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.examples {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 21rem), 1fr));
+  gap: var(--space-l);
+}
+
+.action-card {
+  &[data-theme="indigo"] {
+    --color-accent: var(--color-indigo);
+  }
+  &[data-theme="coral"] {
+    --color-accent: var(--color-coral);
+  }
+
+  /* TODO: Afled disse tokens fra --color-accent med Relative Color Syntax. */
+  --color-accent-hover: ;
+  --color-accent-active: ;
+  --color-accent-muted: ;
+  --color-accent-border: ;
+  --color-accent-focus: ;
+  --color-accent-on-muted: ;
+
+  padding: var(--space-xl);
+  border: 2px solid var(--color-accent-border);
+  border-radius: var(--radius);
+  background: var(--color-accent-muted);
+  box-shadow: 0 1rem 2.5rem rgb(24 32 51 / 0.08);
+}
+
+.action-card > * + * {
+  margin-block-start: var(--space-m);
+}
+
+.action-card .eyebrow {
+  color: var(--color-accent-on-muted);
+}
+
+.action-card h2 {
+  font-size: 1.6rem;
+  line-height: 1.05;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-s);
+}
+
+.button {
+  display: inline-flex;
+  min-block-size: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  padding-inline: var(--space-m);
+  border: 2px solid var(--color-accent);
+  border-radius: 100vmax;
+  font: inherit;
+  font-weight: 750;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.button[data-variant="solid"] {
+  color: var(--color-on-accent);
+  background: var(--color-accent);
+}
+
+.button:hover {
+  border-color: var(--color-accent-hover);
+  background: var(--color-accent-hover);
+}
+
+.button:active {
+  border-color: var(--color-accent-active);
+  background: var(--color-accent-active);
+}
+
+.button:focus-visible {
+  /* Bevar synligt tastaturfokus, indtil accentens focus-token er afledt. */
+  outline: 3px solid var(--color-accent-focus, var(--color-text));
+  outline-offset: 3px;
+}
+
+.button[data-variant="quiet"] {
+  color: var(--color-accent-on-muted);
+  background: transparent;
+}
+
+.button[data-variant="quiet"]:is(:hover, :active) {
+  color: var(--color-on-accent);
+}
+
+.button:disabled {
+  opacity: 0.48;
+  cursor: not-allowed;
+}
