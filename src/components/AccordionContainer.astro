@@ -1,0 +1,23 @@
+---
+import AccordionItem from "../components/AccordionItem.astro";
+
+const { data, exclusive } = Astro.props;
+---
+
+<section class="accordion-container">
+  <div>
+    {data.map((props) => <AccordionItem {...props} {exclusive} />)}
+  </div>
+</section>
+
+<style>
+  section {
+    padding-block: 3rem;
+    background: #f5f5f5;
+  }
+  div {
+    padding: 1rlh;
+    max-width: 725px;
+    margin-inline: auto;
+  }
+</style>

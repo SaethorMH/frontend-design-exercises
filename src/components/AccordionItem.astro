@@ -1,0 +1,78 @@
+---
+import PlusIcon from "../icons/plus.svg";
+const { exclusive, ...props } = Astro.props;
+const { id, question, answer, linkBlock } = props;
+---
+
+<details {id} {...exclusive ? { name: "faq" } : {}}>
+  <summary>
+    <span>
+      {question}
+      <PlusIcon />
+    </span>
+  </summary>
+  <div class="answer">
+    {answer.map((a) => <p set:html={a} />)}
+    {
+      linkBlock && (
+        <a class="link-block" href={linkBlock.url} target="_blank">
+          {linkBlock.label}
+        </a>
+      )
+    }
+  </div>
+</details>
+
+<style>
+  details {
+    color: hsl(190 30% 12%);
+    border-bottom: 1px solid #dadada;
+
+    summary {
+      font-weight: 700;
+      color: #181818;
+      text-wrap: revert;
+      user-select: none;
+      cursor: pointer;
+
+      &::marker,
+      &::-webkit-details-marker {
+        content: "";
+        display: none;
+      }
+
+      span {
+        border: none;
+        text-align: start;
+        padding: 0;
+        inline-size: 100%;
+        padding-block: 1rlh;
+        display: flex;
+        gap: 1rem;
+        justify-content: space-between;
+
+        svg {
+          inline-size: auto;
+          height: 1lh;
+          flex-shrink: 0;
+        }
+      }
+    }
+
+    .answer {
+      color: #595566;
+
+      > * + * {
+        margin-top: 1em;
+      }
+
+      :last-child {
+        padding-block-end: 1rlh;
+      }
+
+      .link-block {
+        display: block;
+      }
+    }
+  }
+</style>
