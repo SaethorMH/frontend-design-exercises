@@ -1,0 +1,53 @@
+li,
+main,
+aside {
+    /* Sæt container-type */
+}
+
+ul {
+    display: grid;
+    gap: 1rlh;
+    padding-block: 1rlh;
+
+    /* Tilføj container regel, når width > 700px */
+    /* - Indstil 2 kolonner */
+    /* - Sæt det første barn til `grid-column: span 2` */
+}
+
+article {
+    display: grid;
+    gap: 1rlh;
+    padding: 1rlh;
+    background: #cceeff;
+    border: 1px solid #99ddff;
+    font-size: clamp(1rem, 3cqw, 1.25rem);
+
+    aside & {
+        background: #ffdbff;
+        border: 1px solid #cc66ff;
+    }
+
+    h3 {
+        font-size: 1.5em;
+        margin-bottom: .4lh;
+    }
+
+    p+p {
+        margin-top: .4lh;
+    }
+
+
+    /* Tilføj container regel når width > 500px */
+    /* - Indstil 2 kolonner */
+    /* - Sæt `order: 1;` på img på hvert andet card */
+}
+
+/* Læg mærke til, at vi bør stadig bruge @media, når det handler om viewporten */
+.content-wrapper {
+
+    @media (width > 700px) {
+        display: grid;
+        grid-template-columns: 1fr 250px;
+        gap: 1rlh;
+    }
+}
