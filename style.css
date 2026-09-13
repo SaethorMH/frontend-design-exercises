@@ -1,0 +1,12 @@
+:root {
+    --color-heading: #0B0D19;
+    --color-body: #677386;
+    --color-bg-button: #3D7BFA;
+    --color-text-button: #FFF;
+
+    /* Når du synes, du er færdig, så ændr værdien herunder til '1' for at se dit resultat i browseren */
+    --hide-overlay: 0;
+}
+
+
+/* Begynd her... */
