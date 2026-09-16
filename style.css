@@ -1,9 +1,47 @@
 body {
   display: grid;
   /* Tilføj navngivne linjer */
-  grid-template-columns: 1fr minmax(0, 70ch) 1fr;
+  grid-template-columns:
+    [full-start] 1fr
+    [content-start] minmax(0, 70ch) [content-end]
+    1fr [full-end];
+}
+header,
+footer,
+main,
+section {
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: full-start / full-end;
 }
 
-.breakout {
-  background: #a8fad5;
+section {
+  > * {
+    grid-column: content-start / content-end;
+  }
+  &.breakout {
+    display: grid;
+    grid-column: full-start / full-end;
+    grid-template-columns: subgrid;
+    > * {
+      grid-column: content-start / content-end;
+    }
+  }
+  @media (min-width: 600px) {
+    &.breakout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-column: full-start / full-end;
+      background: #a8fad5;
+
+      > * {
+        grid-column: full-start / full-end;
+      }
+    }
+  }
+}
+p {
+  section & {
+    min-width: 30ch;
+  }
 }
