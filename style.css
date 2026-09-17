@@ -30,12 +30,13 @@ section {
   @media (min-width: 600px) {
     &.breakout {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: subgrid;
       grid-column: full-start / full-end;
       background: #a8fad5;
 
       > * {
-        grid-column: full-start / full-end;
+        grid-template-columns: 1fr 1fr;
+        grid-column: content-start / content-end;
       }
     }
   }
