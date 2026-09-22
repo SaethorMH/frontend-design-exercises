@@ -2,6 +2,7 @@ body {
   padding: clamp(1rem, 5vw, 4rem);
   color: #000;
   background: #f5f5f5;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
 main {
@@ -28,22 +29,32 @@ figure {
   flex: 0 1 200px;
   min-inline-size: 0;
   text-align: center;
-
+  container: circle / inline-size;
   /* TODO 1: Læs data-value som tekst, tal og procent med attr().
      Kald værdierne --value-string, --value-number og --value-percent. */
-
+  --valuePct: attr(data-value %, 0%);
+  --valueStr: attr(data-value, 0);
+  --value: attr(data-value number, 0);
   /* TODO 3: Brug et fælles grid-område "stack" til SVG og ::after.
      Centrér indholdet, og opret en inline-size-container med navnet stat. */
+  display: grid;
+  grid: "stack";
+  place-items: center;
 }
 
 figure::after {
   /* TODO 3: Vis --value-string med content, og placér tallet i "stack".
      Brug 30cqw og font-weight: 700, så tallet følger figurens bredde. */
+  content: var(--valueStr) "%";
+  grid-area: stack;
+  font-size: 25cqw;
 }
 
 svg {
   /* TODO 2: Drej SVG'en -90deg, så ringen starter øverst. */
   /* TODO 3: Placér SVG'en i "stack". */
+  rotate: -90deg;
+  grid-area: stack;
 }
 
 .track {
@@ -65,15 +76,20 @@ svg {
 
   /* TODO 2: Brug stroke-dasharray og stroke-dashoffset sammen med
      pathLength="100", så --value-number bestemmer ringens længde. */
+  stroke-dasharray: 100;
+  stroke-dashoffset: calc(100 - var(--value));
 }
 
 .marker {
   /* Markøren vises først, når du arbejder med trin 4. */
-  visibility: hidden;
+  /* visibility: hidden; */
 
   /* TODO 4: Brug en cirkulær offset-path med samme centrum og radius
      som ringen. Lad --value-percent styre offset-distance,
      og skift visibility til visible. */
+
+  offset-path: circle(46px at 50px 50px);
+  offset-distance: var(--valuePct);
 }
 
 figcaption {
