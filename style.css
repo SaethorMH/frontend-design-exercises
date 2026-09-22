@@ -16,6 +16,7 @@ html {
 }
 
 article {
+  container: article / inline-size;
   padding: 1rlh;
   max-inline-size: 1200px;
   margin-inline: auto;
@@ -34,6 +35,12 @@ article {
 }
 
 header {
+  container: header / inline-size;
+ @container header (width >= 550px) {
+    /* fx grid med `250px 1fr` cover + tekst ved siden af */
+    & > {
+      grid-template-columns: 250px 1fr;
+  }
   img {
     aspect-ratio: 1;
     object-fit: cover;
@@ -44,12 +51,45 @@ header {
     display: grid;
     gap: 1rlh;
     align-items: start;
+    @container article (width<400px) {
+      * {
+        padding: 0;
+        margin: 0;
+        place-self: center;
+        text-align: center;
+      }
+      h1 + span {
+        margin-left: auto;
+      }
+      span:last-child {
+        margin-right: auto;
+      }
+      p {
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        max-width: 45ch;
+      }
+      .actions {
+        width: 100%;
+      }
+    }
   }
 }
 
 .content {
   display: grid;
   gap: 0.75rlh;
+  @container article (width<400px) {
+    & {
+      background-image: linear-gradient(rgba(255, 255, 255, 0), white 3rem);
+      padding-top: 2rem;
+      margin-top: -5rem;
+    }
+  }
+ 
 }
 
 .album-details {
@@ -90,6 +130,13 @@ header {
     &[data-button="secondary"] {
       background: var(--action-secondary);
       color: var(--on-action-secondary);
+    }
+    @container article (width < 400px) {
+      & {
+        width: 100%;
+        height: 3rem;
+        border-radius: 9999px;
+      }
     }
   }
 }
